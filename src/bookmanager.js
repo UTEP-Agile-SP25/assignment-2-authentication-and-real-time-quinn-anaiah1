@@ -1,4 +1,4 @@
-import { doc, setDoc } from "@firebase/firestore";
+import { doc, setDoc, collection, deleteDoc, onSnapshot } from "@firebase/firestore";
 import{signUp, logout, login, onAuthStateChanged} from "./auth";
 import {db, auth} from "./config";
 
@@ -28,8 +28,46 @@ const saveBook = async function name() {
     }
 }
 
+const deleteBook = async function(collection, docID){
+    try {
+        await deleteDoc(doc(db, collection, docID))
+        console.log(`Document with ID ${docID} deleted successfully`)
+    } catch (error) {
+        console.error("Error deleting book", error)
+        
+    }
+}
+
+const bookCollection = collection(db,"books")
+onSnapshot(bookCollection, (snapshot)=>{
+    const tableBody = document.getElementById("table-body")
+    tableBody.innerHTML=""
+
+    snapshot.forEach((doc)=>{
+        const data = doc.data()
+        const row = document.createElement("tr")
+
+        row.innerHTML= `
+        <td> ${doc.id}</td>
+        <td> ${data.name}</td>
+        <td> ${data.author}</td>
+        <td> ${data.genre}</td>
+        
+        `
+        tableBody.appendChild(row)
+    })
+})
+
 const addBook = document.querySelector("#addBook")
 addBook.addEventListener("submit", (event)=>{
     event.preventDefault()
     saveBook()
+})
+
+const deleteABook = document.querySelector("#deleteBook")
+deleteABook.addEventListener("submit", (event)=>{
+    event.preventDefault()
+    const book = document.getElementById("bookID").value.trim()
+    deleteBook("books", book)
+    document.getElementById("bookID").value = ""
 })

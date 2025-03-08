@@ -1,11 +1,18 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="with=device-width, initial scale=1.0">
     <title>Book Management</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style> /* I really wanted a purple table*/
+        
+        .table-purple th{
+            background-color: #2e037c; /* Puple header */
+            color: white;
+        }
+    </style>
 </head> 
     <body class="bg-light">
         <!--<h1> Book Manager</h1> -->
@@ -28,7 +35,7 @@
                         <label for="genre" class="form-label">Genre:</label>
                         <input type="text" class="form-control" id="genre" name="book_genre">
                     </div>
-                    <button type="submit" class="btn btn-primary w-100"> Add Book</button>
+                    <button type="submit" class="btn btn-success w-100"> Add Book</button>
                 </form>
             </div>
          </div>
@@ -42,7 +49,7 @@
                         <label for="bookID" class="form-label">Book Name:</label>
                         <input type="text" class="form-control" id="bookID" name="delete_book">
                     </div>
-                    <button type="submit" class="btn btn-primary w-100"> Delete Book</button>
+                    <button type="submit" class="btn btn-danger w-100"> Delete Book</button>
                 </form>
             </div>
          </div>
@@ -52,8 +59,8 @@
             <div class = "card p--4 shadow-sm">
                 <h3 class ="text-center mb-3"> Book List</h3>
                 <div class="table-responsive">
-                    <table class="table table-striped table-bordered textcenter">
-                        <thead class="table-dark">
+                    <table class="table table-bordered table-striped textcenter">
+                        <thead class="table-purple">
                             <tr>
                                 <th>ID</th>
                                 <th>Book</th>
@@ -61,6 +68,9 @@
                                 <th>Genre</th>
                             </tr>
                         </thead>
+                        <tbody id="table-body">
+                            <!--Book Data will be instered here dynamically-->
+                        </tbody>
                     </table>
                 </div>
             </div>

@@ -2,7 +2,7 @@ import { doc, setDoc, collection, deleteDoc, onSnapshot } from "@firebase/firest
 import{signUp, logout, login, onAuthStateChanged} from "./auth";
 import {db, auth} from "./config";
 
-const saveBook = async function name() {
+const saveBook = async function name() { // save new book to database
     const bookName = document.getElementById("bookName").value.trim()
     const author = document.getElementById("author").value.trim()
     const genre = document.getElementById("genre").value.trim()
@@ -28,7 +28,7 @@ const saveBook = async function name() {
     }
 }
 
-const deleteBook = async function(collection, docID){
+const deleteBook = async function(collection, docID){ // delete book by id from database
     try {
         await deleteDoc(doc(db, collection, docID))
         console.log(`Document with ID ${docID} deleted successfully`)
@@ -38,7 +38,7 @@ const deleteBook = async function(collection, docID){
     }
 }
 
-const bookCollection = collection(db,"books")
+const bookCollection = collection(db,"books") // table configuration that updates with changes to data
 onSnapshot(bookCollection, (snapshot)=>{
     const tableBody = document.getElementById("table-body")
     tableBody.innerHTML=""
@@ -71,3 +71,10 @@ deleteABook.addEventListener("submit", (event)=>{
     deleteBook("books", book)
     document.getElementById("bookID").value = ""
 })
+
+const logoutUpForm = document.querySelector("#logoutForm")
+logoutUpForm.addEventListener("submit", (event)=>{
+    event.preventDefault()
+    logout()
+
+} )

@@ -45,8 +45,8 @@ export async function signUp(firstName, lastName, email, password){
             lastname: lastName,
             timestamp: new Date()
         })
-        login(email, password)
-        //window.location.href = "bookmanager.html"
+        login(email, password) // log in user after sign up and redirect to book maganager page
+        
 
     }catch(error){
         console.error("Error fetching user data ", error.message);
@@ -56,7 +56,7 @@ export async function signUp(firstName, lastName, email, password){
 export async function login(email, password){
     try {
         const userCredential =  await signInWithEmailAndPassword(auth,email, password)
-        window.location.href = "bookmanager.html"
+        window.location.href = "bookmanager.html" // redirect to book manager page 
     } catch (error) {
         console.error("Log in error", error.message)
         
@@ -64,7 +64,8 @@ export async function login(email, password){
 }
 export async function logout(){
     try {
-        await signOut(auth)
+        await signOut(auth) // sign out using authentication
+        window.location.href = "index.html"
         console.log("User logged out")
     } catch (error) {
         console.error("Logout error", error.message)

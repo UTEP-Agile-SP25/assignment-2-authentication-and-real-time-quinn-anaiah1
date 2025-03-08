@@ -6,13 +6,17 @@ import {auth} from "./config";
 const signUpForm = document.querySelector("#signupForm")
 signUpForm.addEventListener("submit", (event)=>{
     event.preventDefault()
-    const firstname = document.getElementById("firstName").value
-    const lastname = document.getElementById("lastName").value
-    const email = document.getElementById("signupEmail").value
-    const password = document.getElementById("signupPassword").value
+    const firstname = document.getElementById("firstName").value.trim
+    const lastname = document.getElementById("lastName").value.trim()
+    const email = document.getElementById("signupEmail").value.trim()
+    const password = document.getElementById("signupPassword").value.trim()
 
     signUp(firstname, lastname, email, password)
     console.log("Current user:", auth.currentUser);
+    document.getElementById("firstName").value = ""
+    document.getElementById("lastName").value= ""
+    document.getElementById("signupEmail").value =""
+    document.getElementById("signupPassword").value = ""
 
 } )
 
@@ -29,6 +33,9 @@ loginForm.addEventListener("submit", (event)=>{
     const email = document.getElementById("loginEmail").value
     const password = document.getElementById("loginPassword").value
     login(email, password)
+
+    document.getElementById("loginEmail").value =""
+    document.getElementById("loginPassword").value = ""
 
 } )
 

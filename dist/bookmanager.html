@@ -1,8 +1,72 @@
 <!DOCTYPE html>
+<html lang="eng">
 <head>
-    <body>
-        <h1> Book Manager</h1>
-        <div id ="greeting"></div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="with=device-width, initial scale=1.0">
+    <title>Book Management</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head> 
+    <body class="bg-light">
+        <!--<h1> Book Manager</h1> -->
+        <div id ="greeting" class="container text-center mt-3 fw-bold"></div>
+    
+        <!-- Add Book Section -->
+         <div class="container mt-4">
+            <div class = "card p--4 shadow-sm">
+                <h3 class ="text-center mb-3"> Add Book</h3>
+                <form id = "addBook">
+                    <div class="mb-3">
+                        <label for="bookName" class="form-label">Book Name:</label>
+                        <input type="text" class="form-control" id="bookName" name="book_name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label"> Author:</label>
+                        <input type="text" class="form-control" id="author" name="book_author">
+                    </div>
+                    <div class="mb-3">
+                        <label for="genre" class="form-label">Genre:</label>
+                        <input type="text" class="form-control" id="genre" name="book_genre">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100"> Add Book</button>
+                </form>
+            </div>
+         </div>
+
+        <!-- Delete Book Section -->
+        <div class="container mt-4">
+            <div class = "card p--4 shadow-sm">
+                <h3 class ="text-center mb-3"> Delete Book</h3>
+                <form id = "deleteBook">
+                    <div class="mb-3">
+                        <label for="bookID" class="form-label">Book Name:</label>
+                        <input type="text" class="form-control" id="bookID" name="delete_book">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100"> Delete Book</button>
+                </form>
+            </div>
+         </div>
+
+         <!-- Book Table -->
+         <div class="container mt-5">
+            <div class = "card p--4 shadow-sm">
+                <h3 class ="text-center mb-3"> Book List</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered textcenter">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>ID</th>
+                                <th>Book</th>
+                                <th>Author</th>
+                                <th>Genre</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+         </div>
+         
     </body>
 <script src="bookmanager.bundle.js"></script>
-</head>
+
+</html>

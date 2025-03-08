@@ -22,7 +22,7 @@ async function fetchUserData(userID) {
         if (userSnap.exists()) {
             console.log("User Data: ", userSnap.data());
             const userData = userSnap.data()
-            document.getElementById("greeting").innerHTML = "<h1> Hi, " + userData.firstname + "</h1>"
+            document.getElementById("greeting").innerHTML = "<h2> Hi, " + userData.firstname + "</h2>"
             //return userSnap.data();
         } else {
             console.log("No user document found for:", userID);
@@ -45,7 +45,8 @@ export async function signUp(firstName, lastName, email, password){
             lastname: lastName,
             timestamp: new Date()
         })
-    
+        login(email, password)
+        //window.location.href = "bookmanager.html"
 
     }catch(error){
         console.error("Error fetching user data ", error.message);

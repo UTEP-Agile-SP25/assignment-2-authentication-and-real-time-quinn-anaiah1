@@ -1,4 +1,4 @@
-import {signUp} from "./auth"
+import {signUp, logout, login} from "./auth"
 import {auth} from "./config";
 
 
@@ -15,3 +15,20 @@ signUpForm.addEventListener("submit", (event)=>{
     console.log("Current user:", auth.currentUser);
 
 } )
+
+const logoutUpForm = document.querySelector("#logoutForm")
+logoutUpForm.addEventListener("submit", (event)=>{
+    event.preventDefault()
+    logout()
+
+} )
+
+const loginForm = document.querySelector("#loginForm")
+loginForm.addEventListener("submit", (event)=>{
+    event.preventDefault()
+    const email = document.getElementById("loginEmail").value
+    const password = document.getElementById("loginPassword").value
+    login(email, password)
+
+} )
+
